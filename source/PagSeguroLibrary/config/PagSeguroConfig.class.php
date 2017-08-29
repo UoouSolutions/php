@@ -59,6 +59,25 @@ class PagSeguroConfig
         return self::$config;
     }
 
+    /**
+    * Criação de método que permite a entrada de um array externo de configuração
+    * Foi feito isso pois tentou-se de todas as formas inserir as informações para o 
+    * PagSeguro externamente (utilizado PUTENV, subtituir PagSeguroConfigWrapper, etc.)
+    * 
+    * @author Felipe Corrêa
+    * @since 2016-11-25 17:32
+    * @param array $data
+    * @throws Exception
+    */
+    public static function setDataArr(array $data)
+    {
+        if (!empty($data)) {
+            self::$data = $data;
+        } else {
+            throw new Exception("Array is empty.");
+        }
+    }
+ 
     public static function getData($key1, $key2 = null)
     {
         if ($key2 != null) {
